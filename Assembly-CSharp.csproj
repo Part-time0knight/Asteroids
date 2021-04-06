@@ -56,13 +56,16 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Enemy Controller\Spawner.cs" />
     <Compile Include="Assets\Scripts\Player Controller\PlayerShoot.cs" />
+    <Compile Include="Assets\Scripts\Object Controller\ObjectFly.cs" />
     <Compile Include="Assets\Scripts\Player Controller\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player Controller\MouseRotate.cs" />
-    <Compile Include="Assets\Scripts\Enemy Controller\Spawner.cs" />
-    <Compile Include="Assets\Scripts\Object Controller\ObjectFly.cs" />
-    <Compile Include="Assets\Scripts\Enemy Controller\AsteroidState.cs" />
     <Compile Include="Assets\Scripts\Enemy Controller\AsteroidRotation.cs" />
+    <Compile Include="Assets\Scripts\Enemy Controller\AsteroidState.cs" />
+    <Compile Include="Assets\Scripts\Bullets\BulletsState.cs" />
+    <Compile Include="Assets\Scripts\Object Controller\ObjState.cs" />
+    <Compile Include="Assets\Scripts\Object Controller\ExplodeScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
