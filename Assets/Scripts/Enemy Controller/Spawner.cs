@@ -9,15 +9,21 @@ public class Spawner : MonoBehaviour
     //[SerializeField] int border = 10; //% от края сторон
     [SerializeField] GameObject asteroid;
     [SerializeField] float asteroid_delay = 1f;
-    [SerializeField] float asteroid_spd_max = 5f;
+    [SerializeField] float asteroid_spd_max = 3f;
     [SerializeField] float asteroid_spd_min = 1f;
+    [SerializeField] GameObject common_enemy;
+    [SerializeField] float common_enemy_delay = 5f;
+    [SerializeField] float common_enemy_spd_max = 3f;
+    [SerializeField] float common_enemy_spd_min = 1f;
 
     private float a_time;
+    private float ce_time;
     private int camera_h;
     private int camera_w;
     void Awake()
     {
         a_time = asteroid_delay - 0.5f;
+        ce_time = 0f;
         camera_h = Camera.main.pixelHeight;
         camera_w = Camera.main.pixelWidth;
     }
@@ -27,9 +33,13 @@ public class Spawner : MonoBehaviour
         TimeUpdate();
         if (a_time == 0f)
         {
-            int side = Random.Range(0, 3);
-            GameObject asteroid = SpawnEnemy(side, 0);//спавн астероида
+            GameObject asteroid = SpawnEnemy(Random.Range(0, 4), 0);//спавн астероида
             asteroid.GetComponent<AsteroidState>().AsteroidSize(Random.Range(0, 3));
+        }
+        if (ce_time == 0f)
+        {
+            GameObject asteroid = SpawnEnemy(Random.Range(0, 4), 1);//спавн обычного противника
+            //asteroid.GetComponent<AsteroidState>().AsteroidSize(Random.Range(0, 3));
         }
     }
     private GameObject SpawnEnemy(int side, int type)
@@ -51,7 +61,10 @@ public class Spawner : MonoBehaviour
         }
         else if (type == 1)
         {
-            Debug.Log("common enemy ship");
+            item = common_enemy;
+            spd_max = common_enemy_spd_max;
+            spd_min = common_enemy_spd_min;
+            spd = Random.Range(spd_min, spd_max);
         }
         else
         {
@@ -104,7 +117,7 @@ public class Spawner : MonoBehaviour
             Debug.LogError("Стороны с таким номером не существует: " + side);
         }
         item = Instantiate(item, start, Quaternion.identity);
-        item.GetComponent<ObjectFly>().ActivateObj(spd, angle, 15f);
+        item.GetComponent<ObjFly>().ActivateObj(spd, angle, Camera.main.ScreenToWorldPoint(new Vector3(camera_w, 0, 0)).x / spd * 2.5f);
         return item;
     }
 
@@ -120,7 +133,10 @@ public class Spawner : MonoBehaviour
     private void TimeUpdate()
     {
         a_time += Time.deltaTime;
+        ce_time += Time.deltaTime;
         if (a_time >= asteroid_delay)
             a_time = 0f;
+        if (ce_time >= common_enemy_delay)
+            ce_time = 0f;
     }
 }

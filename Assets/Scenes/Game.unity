@@ -153,7 +153,7 @@ Transform:
   - {fileID: 839980055}
   - {fileID: 1786576413}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &79348925
 GameObject:
@@ -555,9 +555,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 346448836300850005, guid: b5b491304a64f39478e9ff1fbeba0524, type: 3}
-  asteroid_delay: 1
+  asteroid_delay: 1.5
   asteroid_spd_max: 3
   asteroid_spd_min: 1
+  common_enemy: {fileID: 1176949569824867554, guid: fd527beac8d4d924b90c23653825c15f, type: 3}
+  common_enemy_delay: 2
+  common_enemy_spd_max: 3
+  common_enemy_spd_min: 2
 --- !u!4 &1098944566
 Transform:
   m_ObjectHideFlags: 0
@@ -672,7 +676,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8741019370912547530, guid: 9478347b56718c747a56100e05bd4d55, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8741019370912547530, guid: 9478347b56718c747a56100e05bd4d55, type: 3}
       propertyPath: m_LocalPosition.x

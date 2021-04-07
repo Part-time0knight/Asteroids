@@ -69,6 +69,6 @@ public class AsteroidState : MonoBehaviour
         Vector3 pos = new Vector3(pos_x, pos_y, 0);
         GameObject new_asteroid = Instantiate(aster_pref, pos, Quaternion.identity);
         new_asteroid.GetComponent<AsteroidState>().AsteroidSize(new_size);
-        new_asteroid.GetComponent<ObjectFly>().ActivateObj(state.GetSpeed() + Random.Range(-0.5f, 1.5f), angle, 15f);
+        new_asteroid.GetComponent<ObjFly>().ActivateObj(state.GetSpeed() + Random.Range(-0.5f, 1.5f), angle, 15f);
     }
 }

@@ -110,10 +110,11 @@ GameObject:
   - component: {fileID: 8741019371323999784}
   - component: {fileID: 8741019371323999785}
   - component: {fileID: 8741019371323999786}
-  - component: {fileID: 8741019371323999783}
   - component: {fileID: 565988252390245986}
   - component: {fileID: 8420400890863168717}
   - component: {fileID: 3424796284076402377}
+  - component: {fileID: 1686229438732157221}
+  - component: {fileID: 8495549283304671788}
   m_Layer: 0
   m_Name: Player Phys
   m_TagString: Object
@@ -216,23 +217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angl_fix: 90
---- !u!114 &8741019371323999783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8741019371323999788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0029c032b68814447b9a0296fec1dde2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 7863657303474707421, guid: ad9140487604ffc4c857345babdabd42, type: 3}
-  bullet_start: {fileID: 6459316959358661423}
-  fire_spd: 0.5
-  bullet_spd: 10
-  bullet_life: 4
 --- !u!114 &565988252390245986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,3 +261,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1686229438732157221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741019371323999788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46e23303c01107479e8dce989260867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8495549283304671788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741019371323999788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12f7fbd8b227bbb40bd20b8389f87e5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 7863657303474707421, guid: ad9140487604ffc4c857345babdabd42, type: 3}
+  bullet_start: {fileID: 6459316959358661423}
+  fire_spd: 0.5
+  bullet_spd: 10
+  bullet_life: 4
