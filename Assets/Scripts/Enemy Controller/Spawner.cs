@@ -28,11 +28,11 @@ public class Spawner : MonoBehaviour
         if (a_time == 0f)
         {
             int side = Random.Range(0, 3);
-            
-            SpawnEnemy(side, 0);//спавн астероида
+            GameObject asteroid = SpawnEnemy(side, 0);//спавн астероида
+            asteroid.GetComponent<AsteroidState>().AsteroidSize(Random.Range(0, 3));
         }
     }
-    private void SpawnEnemy(int side, int type)
+    private GameObject SpawnEnemy(int side, int type)
     {
         GameObject item = null;
         float angle = 0f;
@@ -105,7 +105,7 @@ public class Spawner : MonoBehaviour
         }
         item = Instantiate(item, start, Quaternion.identity);
         item.GetComponent<ObjectFly>().ActivateObj(spd, angle, 15f);
-
+        return item;
     }
 
     private float GetAngleRand( int point, int length)

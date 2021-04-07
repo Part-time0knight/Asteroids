@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(ObjState))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class ObjectFly : MonoBehaviour
 {
     private Rigidbody2D body;
+    private ObjState state;
     private bool active = false;
     private float obj_spd = 0;
 
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
-        //Destroy(gameObject, life_time);
+        state = GetComponent<ObjState>();
     }
 
     void FixedUpdate()
@@ -24,5 +26,6 @@ public class ObjectFly : MonoBehaviour
         obj_spd = spd;
         active = true;
         if (time > 0) Destroy(gameObject, time);
+        state.SetSpeed(spd);
     }
 }

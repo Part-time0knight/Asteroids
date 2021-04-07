@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 2108228619360223029}
   - component: {fileID: 4423287067858183528}
   - component: {fileID: 125495609266368771}
+  - component: {fileID: 723038659911642416}
   m_Layer: 0
   m_Name: Asteroid
-  m_TagString: Enemy
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +52,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.85
+  m_Radius: 1
 --- !u!50 &3037706515166779299
 Rigidbody2D:
   serializedVersion: 4
@@ -97,6 +98,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6099a8ec5b2b778469f1b35b4f5e4ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  hp: 1
+  big_spr:
+  - {fileID: 21300006, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300008, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300010, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300012, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  big_coll_radius: 1
+  medium_spr:
+  - {fileID: 21300014, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300016, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300018, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300020, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300022, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  medium_coll_radius: 0.65
+  small_spr:
+  - {fileID: 21300024, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300026, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300028, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300030, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300032, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300034, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  small_coll_radius: 0.2
+  aster_pref: {fileID: 1582492288587056513, guid: bd7dd45cac4366842978070eeda30420, type: 3}
 --- !u!114 &125495609266368771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +132,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15f0ad85a1f1db245a820a351951a062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &723038659911642416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346448836300850005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949d4c46db26f3941a31f3e85a328794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   explode_obj: {fileID: 9140924105705533483, guid: 174da650264cb124484bab499fd965e1, type: 3}

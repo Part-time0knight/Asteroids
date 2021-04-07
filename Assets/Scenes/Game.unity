@@ -352,30 +352,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &719672697 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8741019371323999788, guid: 9478347b56718c747a56100e05bd4d55, type: 3}
-  m_PrefabInstance: {fileID: 8741019369819495407}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &719672703
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719672697}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e370c995ac4a37e4bb2810b456fa4c2e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &836431664
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 346448836300850005, guid: b5b491304a64f39478e9ff1fbeba0524, type: 3}
-  asteroid_delay: 0.6
+  asteroid_delay: 1
   asteroid_spd_max: 4
   asteroid_spd_min: 1
 --- !u!4 &1098944566
@@ -741,10 +717,6 @@ PrefabInstance:
     - target: {fileID: 8741019370912547533, guid: 9478347b56718c747a56100e05bd4d55, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8741019371323999783, guid: 9478347b56718c747a56100e05bd4d55, type: 3}
-      propertyPath: fire_spd
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9478347b56718c747a56100e05bd4d55, type: 3}
