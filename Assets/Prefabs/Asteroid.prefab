@@ -101,10 +101,9 @@ MonoBehaviour:
   damage: 1
   hp: 1
   big_spr:
-  - {fileID: 21300006, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
-  - {fileID: 21300008, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
-  - {fileID: 21300010, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
-  - {fileID: 21300012, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300000, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300002, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300004, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
   big_coll_radius: 1
   medium_spr:
   - {fileID: 21300014, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
@@ -112,7 +111,7 @@ MonoBehaviour:
   - {fileID: 21300018, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
   - {fileID: 21300020, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
   - {fileID: 21300022, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
-  medium_coll_radius: 0.65
+  medium_coll_radius: 0.5
   small_spr:
   - {fileID: 21300024, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
   - {fileID: 21300026, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
@@ -120,7 +119,7 @@ MonoBehaviour:
   - {fileID: 21300030, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
   - {fileID: 21300032, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
   - {fileID: 21300034, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
-  small_coll_radius: 0.2
+  small_coll_radius: 0.18
   aster_pref: {fileID: 1582492288587056513, guid: bd7dd45cac4366842978070eeda30420, type: 3}
 --- !u!114 &125495609266368771
 MonoBehaviour:
@@ -219,7 +218,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300006, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

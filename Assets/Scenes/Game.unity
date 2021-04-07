@@ -556,7 +556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroid: {fileID: 346448836300850005, guid: b5b491304a64f39478e9ff1fbeba0524, type: 3}
   asteroid_delay: 1
-  asteroid_spd_max: 4
+  asteroid_spd_max: 3
   asteroid_spd_min: 1
 --- !u!4 &1098944566
 Transform:

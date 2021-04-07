@@ -17,7 +17,7 @@ public class AsteroidState : MonoBehaviour
     private SpriteRenderer spr;
     private CircleCollider2D c_collider;
     private int size;
-    private float range = 30f;
+    private float range = 45f;
 
     private void Awake()
     {
@@ -52,7 +52,7 @@ public class AsteroidState : MonoBehaviour
     {
         if (size > 0)
         {
-            NewAsteroid(0, 1);
+            NewAsteroid(size - 1, 1);
             if (Random.Range(0, 2) > 0)
             {
                 NewAsteroid(0, -1);
@@ -61,10 +61,14 @@ public class AsteroidState : MonoBehaviour
     }
     private void NewAsteroid(int new_size, int side)
     {
+        float rad = transform.eulerAngles.z * Mathf.PI / 180;
+        float pos_x = transform.position.x + Mathf.Cos(rad) * c_collider.radius / 2f * side;
+        float pos_y = transform.position.y + Mathf.Sin(rad) * c_collider.radius / 2f * side;
+        float angle = transform.eulerAngles.z - Random.Range(5, range) * side;
 
-        Vector3 pos = new Vector3(transform.position.x + c_collider.radius / 2f * side, transform.position.y + c_collider.radius / 2f * side, 0);
+        Vector3 pos = new Vector3(pos_x, pos_y, 0);
         GameObject new_asteroid = Instantiate(aster_pref, pos, Quaternion.identity);
         new_asteroid.GetComponent<AsteroidState>().AsteroidSize(new_size);
-        new_asteroid.GetComponent<ObjectFly>().ActivateObj(state.GetSpeed() + Random.Range(-2f, 2f), transform.eulerAngles.z + Random.Range(0, range * side) * 2, 15f);
+        new_asteroid.GetComponent<ObjectFly>().ActivateObj(state.GetSpeed() + Random.Range(-0.5f, 1.5f), angle, 15f);
     }
 }
