@@ -7,6 +7,20 @@ public class ObjState : MonoBehaviour
     private int hp = 1;
     private int dmg = 1;
     private float spd = 0;
+    private bool in_fly = false;
+
+    public void SetFly()
+    {
+        in_fly = true;
+    }
+    public void StopFly()
+    {
+        in_fly = false;
+    }
+    public bool GetFly()
+    {
+        return in_fly;
+    }
     public void InitObj(int new_hp, int new_damage)
     {
         hp = new_hp;

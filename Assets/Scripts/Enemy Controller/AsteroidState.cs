@@ -46,7 +46,6 @@ public class AsteroidState : MonoBehaviour
         }
         else
             Debug.LogError("Астероида такого размера не существует!");
-        Debug.Log(spr.sprite + " " + c_collider.radius);
     }
     public void OnDestroy()
     {
@@ -65,10 +64,11 @@ public class AsteroidState : MonoBehaviour
         float pos_x = transform.position.x + Mathf.Cos(rad) * c_collider.radius / 2f * side;
         float pos_y = transform.position.y + Mathf.Sin(rad) * c_collider.radius / 2f * side;
         float angle = transform.eulerAngles.z - Random.Range(5, range) * side;
-
+        float spd = state.GetSpeed() + Random.Range(-0.5f, 1.5f);
+        int camera_w = Camera.main.pixelWidth;
         Vector3 pos = new Vector3(pos_x, pos_y, 0);
         GameObject new_asteroid = Instantiate(aster_pref, pos, Quaternion.identity);
         new_asteroid.GetComponent<AsteroidState>().AsteroidSize(new_size);
-        new_asteroid.GetComponent<ObjFly>().ActivateObj(state.GetSpeed() + Random.Range(-0.5f, 1.5f), angle, 15f);
+        new_asteroid.GetComponent<ObjFly>().ActivateObj(spd, angle, Camera.main.ScreenToWorldPoint(new Vector3(camera_w, 0, 0)).x / spd * 2.1f);
     }
 }

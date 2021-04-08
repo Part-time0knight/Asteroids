@@ -117,7 +117,7 @@ public class Spawner : MonoBehaviour
             Debug.LogError("—тороны с таким номером не существует: " + side);
         }
         item = Instantiate(item, start, Quaternion.identity);
-        item.GetComponent<ObjFly>().ActivateObj(spd, angle, Camera.main.ScreenToWorldPoint(new Vector3(camera_w, 0, 0)).x / spd * 2.5f);
+        item.GetComponent<ObjFly>().ActivateObj(spd, angle, Camera.main.ScreenToWorldPoint(new Vector3(camera_w, 0, 0)).x / spd * 2.1f);
         return item;
     }
 

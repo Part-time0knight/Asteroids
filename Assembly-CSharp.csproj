@@ -68,6 +68,9 @@
     <Compile Include="Assets\Scripts\Enemy Controller\CommonEnemyState.cs" />
     <Compile Include="Assets\Scripts\Object Controller\ObjRotation.cs" />
     <Compile Include="Assets\Scripts\Enemy Controller\AsteroidState.cs" />
+    <Compile Include="Assets\Scripts\Bullet Controller\BulletState.cs" />
+    <Compile Include="Assets\Scripts\Enemy Controller\CommonEnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\Object Controller\ObjHyperJump.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

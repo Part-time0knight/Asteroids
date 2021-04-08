@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3023917853313126377}
   - component: {fileID: 6982007177437942015}
   - component: {fileID: 1477376081913903137}
+  - component: {fileID: -7251768604735100367}
   m_Layer: 0
   m_Name: Common Enemy Ship
   m_TagString: Untagged
@@ -214,6 +215,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46e23303c01107479e8dce989260867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7251768604735100367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176949569824867554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e46b0f7ab7c7da4ea541993607f0ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activate_time: 2
+  change_time: 2
+  angle: 40
 --- !u!1 &3740914332814256649
 GameObject:
   m_ObjectHideFlags: 0
