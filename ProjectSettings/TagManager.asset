@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Object
   - Wall
+  - Player Bullet
+  - Game Controller
   layers:
   - Default
   - TransparentFX

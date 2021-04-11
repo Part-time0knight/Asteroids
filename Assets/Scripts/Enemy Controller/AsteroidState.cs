@@ -13,18 +13,21 @@ public class AsteroidState : MonoBehaviour
     [SerializeField] private Sprite[] small_spr;
     [SerializeField] private float small_coll_radius = 0.2f;
     [SerializeField] private GameObject aster_pref;
+    [SerializeField] private int score = 10;
     private ObjState state;
     private SpriteRenderer spr;
     private CircleCollider2D c_collider;
+    private Factory creator;
     private int size;
     private float range = 45f;
 
     private void Awake()
     {
         state = GetComponent<ObjState>();
-        state.InitObj(hp, damage);
+        state.InitObj(hp, damage, score);
         spr = GetComponentInChildren<SpriteRenderer>();
         c_collider = GetComponent<CircleCollider2D>();
+        creator = ScriptableObject.CreateInstance<Factory>();
     }
     public void AsteroidSize(int new_size)
     {
@@ -66,9 +69,8 @@ public class AsteroidState : MonoBehaviour
         float angle = transform.eulerAngles.z - Random.Range(5, range) * side;
         float spd = state.GetSpeed() + Random.Range(-0.5f, 1.5f);
         int camera_w = Camera.main.pixelWidth;
+        float life = Camera.main.ScreenToWorldPoint(new Vector3(camera_w, 0, 0)).x / spd * 2.1f;
         Vector3 pos = new Vector3(pos_x, pos_y, 0);
-        GameObject new_asteroid = Instantiate(aster_pref, pos, Quaternion.identity);
-        new_asteroid.GetComponent<AsteroidState>().AsteroidSize(new_size);
-        new_asteroid.GetComponent<ObjFly>().ActivateObj(spd, angle, Camera.main.ScreenToWorldPoint(new Vector3(camera_w, 0, 0)).x / spd * 2.1f);
+        creator.CreateObject(aster_pref, pos, life, spd, angle, new_size);
     }
 }

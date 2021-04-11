@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 1287997304773693436}
   - component: {fileID: 3023917853313126377}
   - component: {fileID: 6982007177437942015}
-  - component: {fileID: 1477376081913903137}
   - component: {fileID: -7251768604735100367}
   m_Layer: 0
   m_Name: Common Enemy Ship
@@ -200,21 +199,9 @@ MonoBehaviour:
   bullet: {fileID: 1261437528669733561, guid: 6a775ccdebc9e0e4995c0e14f5a80229, type: 3}
   bullet_ang: {fileID: 7367154012485915297}
   bullet_start: {fileID: 3740914332814256649}
-  fire_spd: 1.2
+  fire_spd: 0.8
   bullet_spd: 8
   bullet_life: 4
---- !u!114 &1477376081913903137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176949569824867554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b46e23303c01107479e8dce989260867, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-7251768604735100367
 MonoBehaviour:
   m_ObjectHideFlags: 0

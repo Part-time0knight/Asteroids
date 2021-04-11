@@ -20,12 +20,14 @@ public class Spawner : MonoBehaviour
     private float ce_time;
     private int camera_h;
     private int camera_w;
+    private Factory creator;
     void Awake()
     {
         a_time = asteroid_delay - 0.5f;
         ce_time = 0f;
         camera_h = Camera.main.pixelHeight;
         camera_w = Camera.main.pixelWidth;
+        creator = ScriptableObject.CreateInstance<Factory>();
     }
 
     void Update()
@@ -33,16 +35,14 @@ public class Spawner : MonoBehaviour
         TimeUpdate();
         if (a_time == 0f)
         {
-            GameObject asteroid = SpawnEnemy(Random.Range(0, 4), 0);//спавн астероида
-            asteroid.GetComponent<AsteroidState>().AsteroidSize(Random.Range(0, 3));
+            SpawnEnemy(Random.Range(0, 4), asteroid);//спавн астероида
         }
         if (ce_time == 0f)
         {
-            GameObject asteroid = SpawnEnemy(Random.Range(0, 4), 1);//спавн обычного противника
-            //asteroid.GetComponent<AsteroidState>().AsteroidSize(Random.Range(0, 3));
+            SpawnEnemy(Random.Range(0, 4), common_enemy);//спавн обычного противника
         }
     }
-    private GameObject SpawnEnemy(int side, int type)
+    private GameObject SpawnEnemy(int side, GameObject type)
     {
         GameObject item = null;
         float angle = 0f;
@@ -50,25 +50,24 @@ public class Spawner : MonoBehaviour
         float spd_min = 0f;
         float spd_max = 0f;
         float out_camera = 40f;
+        float life_time = Camera.main.ScreenToWorldPoint(new Vector3(camera_w, 0, 0)).x / spd * 3.5f;
         Vector3 start = new Vector3(0, 0, 0);
 
-        if (type == 0) //определение объекта и его скорость
+        if (type == asteroid) //определение объекта и его скорость
         {
-            item = asteroid;
             spd_max = asteroid_spd_max;
             spd_min = asteroid_spd_min;
             spd = Random.Range(spd_min, spd_max);
         }
-        else if (type == 1)
+        else if (type == common_enemy)
         {
-            item = common_enemy;
             spd_max = common_enemy_spd_max;
             spd_min = common_enemy_spd_min;
             spd = Random.Range(spd_min, spd_max);
         }
         else
         {
-            Debug.LogError("Врага с таким номером не существует: " + type);
+            Debug.LogError("Врага с таким индексом не существует: " + type);
         }
 
         if (side == 0) // нижняя грань экрана
@@ -116,8 +115,7 @@ public class Spawner : MonoBehaviour
         {
             Debug.LogError("Стороны с таким номером не существует: " + side);
         }
-        item = Instantiate(item, start, Quaternion.identity);
-        item.GetComponent<ObjFly>().ActivateObj(spd, angle, Camera.main.ScreenToWorldPoint(new Vector3(camera_w, 0, 0)).x / spd * 2.1f);
+        item = creator.CreateObject(type, start, life_time, spd, angle);
         return item;
     }
 

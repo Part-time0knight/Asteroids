@@ -7,15 +7,21 @@ public class CommonEnemyState : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject bullet_ang;
     [SerializeField] GameObject bullet_start;
+    [SerializeField] int score = 20;
+    [SerializeField] int hp = 1;
+    [SerializeField] int damage = 1;
     [SerializeField] float fire_spd = 1f;
     [SerializeField] float bullet_spd = 10f;
     [SerializeField] float bullet_life = 4f;
 
+    private ObjState state;
     private float reload = 0f;
-    private ObjShoot shoota;
+    private Factory shoota;
     private void Awake()
     {
-        shoota = GetComponent<ObjShoot>();
+        shoota = ScriptableObject.CreateInstance<Factory>();
+        state = GetComponent<ObjState>();
+        state.InitObj(hp, damage, score);
     }
     private void Update()
     {
@@ -23,7 +29,7 @@ public class CommonEnemyState : MonoBehaviour
         if (reload == 0f)
         {
             bullet_ang.transform.eulerAngles = new Vector3(0, 0, Random.Range(-180f, 180f));
-            shoota.Shoot(bullet, bullet_start.transform.position, bullet_spd, bullet_ang.transform.eulerAngles.z, bullet_life);//выстрел
+            shoota.CreateObject(bullet, bullet_start.transform.position, bullet_life, bullet_spd, bullet_ang.transform.eulerAngles.z);//выстрел
         }
         reload += Time.deltaTime;//процесс перезарядки
     }
