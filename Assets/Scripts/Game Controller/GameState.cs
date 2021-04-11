@@ -23,7 +23,7 @@ public class GameState : MonoBehaviour
             Pause(true);
             press_pause = true;
         }
-        if (press_pause && !play && Input.GetButtonDown("Pause"))
+        else if (press_pause && !play && Input.GetButtonDown("Pause"))
         {
             Pause(false);
             press_pause = false;

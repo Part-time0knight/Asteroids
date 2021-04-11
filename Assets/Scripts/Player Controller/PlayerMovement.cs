@@ -12,12 +12,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private ObjState state;
     private GameState game_state;
+    private Vector2 freez_spd;
 
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         state = GetComponentInChildren<ObjState>();
         game_state = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
+        freez_spd = new Vector2(0f, 0f);
     }
     void FixedUpdate()
     {
@@ -32,7 +34,11 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                     state.StopFly();
-
+            if (freez_spd.x != 0f || freez_spd.y != 0f)
+            {
+                body.velocity = freez_spd;
+                freez_spd *= 0;
+            }
             if (move_h != 0f)
             {
                 current_spd_h += (Mathf.Sign(move_h) * accelerate_spd);
@@ -50,5 +56,11 @@ public class PlayerMovement : MonoBehaviour
             current_spd_h = Mathf.Clamp(current_spd_h, -max_spd, max_spd);
             current_spd_v = Mathf.Clamp(current_spd_v, -max_spd, max_spd);
         }
+        else if (body.velocity.x != 0f || body.velocity.y != 0f)
+        {
+            freez_spd = body.velocity;
+            body.velocity *= 0f;
+        }
+
     }
 }
