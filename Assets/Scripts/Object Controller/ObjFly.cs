@@ -15,7 +15,10 @@ public class ObjFly : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         state = GetComponent<ObjState>();
-        game_state = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
+    }
+    private void Start()
+    {
+        game_state = state.GetGameState();
     }
 
     void FixedUpdate()
@@ -27,7 +30,7 @@ public class ObjFly : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, angl);
         obj_spd = spd;
         active = true;
-        if (time > 0) Destroy(gameObject, time);
+        if (time > 0) state.DestroyObj(time);
         state.SetSpeed(spd);
     }
 }

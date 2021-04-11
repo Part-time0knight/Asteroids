@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void StateDestroy();
 public class ObjState : MonoBehaviour
 {
     private int hp = 1;
@@ -9,7 +10,29 @@ public class ObjState : MonoBehaviour
     private float spd = 0;
     private bool in_fly = false; //для контроля анимации
     private int score = 0; //
-
+    private float delta_time = -1f;
+    StateDestroy SpecialDestroy = null;
+    GameState game_state;
+    private void Awake()
+    {
+        game_state = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
+    }
+    public void InitObj(int new_hp, int new_damage, int new_score, StateDestroy func)
+    {
+        hp = new_hp;
+        dmg = new_damage;
+        score = new_score;
+        SpecialDestroy = func;
+    }
+    private void Update()
+    {
+        if (!game_state.GetPause() && delta_time >= 0f)
+            delta_time += Time.deltaTime;
+    }
+    public GameState GetGameState()
+    {
+        return game_state;
+    }
     public void SetScore(int new_score)
     {
         score = new_score;
@@ -30,12 +53,7 @@ public class ObjState : MonoBehaviour
     {
         return in_fly;
     }
-    public void InitObj(int new_hp, int new_damage, int new_score)
-    {
-        hp = new_hp;
-        dmg = new_damage;
-        score = new_score;
-    }
+
     public int GetDamage()
     {
         return dmg;
@@ -55,5 +73,18 @@ public class ObjState : MonoBehaviour
     public void SetSpeed(float new_spd)
     {
         spd = new_spd;
+    }
+    public void DestroyObj(float time)
+    {
+        if (delta_time < 0f)
+            delta_time = 0f;
+        if (delta_time >= time)
+        {
+            if (SpecialDestroy != null)
+            {
+                SpecialDestroy();
+            }
+            Destroy(gameObject);
+        }
     }
 }

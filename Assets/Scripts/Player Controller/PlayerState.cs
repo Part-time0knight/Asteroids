@@ -12,6 +12,8 @@ public class PlayerState : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject bullet_start;
     [SerializeField] GameObject jump_effect;
+    [SerializeField] int hp = 1;
+    [SerializeField] int dmg = 1;
     [SerializeField] float fire_spd = 1f;
     [SerializeField] float bullet_spd = 10f;
     [SerializeField] float bullet_life = 4f;
@@ -29,9 +31,10 @@ public class PlayerState : MonoBehaviour
     {
         shoota = ScriptableObject.CreateInstance<Factory>();
         state = GetComponent<ObjState>();
+        state.InitObj(hp, dmg, 0, PreDestroy);
         anim = GetComponent<Animator>();
         jump = GetComponent<ObjHyperJump>();
-        game_state = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
+        game_state = state.GetGameState();
         anm_spd = anim.speed;
     }
     private void Update()
@@ -70,7 +73,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void PreDestroy()
     {
         if (game_state)
             game_state.PlayerDead();

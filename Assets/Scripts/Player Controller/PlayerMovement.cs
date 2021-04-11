@@ -18,8 +18,11 @@ public class PlayerMovement : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         state = GetComponentInChildren<ObjState>();
-        game_state = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
         freez_spd = new Vector2(0f, 0f);
+    }
+    private void Start()
+    {
+        game_state = state.GetGameState();
     }
     void FixedUpdate()
     {

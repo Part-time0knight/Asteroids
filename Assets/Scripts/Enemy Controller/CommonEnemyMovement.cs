@@ -13,7 +13,11 @@ public class CommonEnemyMovement : MonoBehaviour
     private GameState game_state;
     private void Awake()
     {
-        game_state = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
+        state = GetComponent<ObjState>();
+    }
+    private void Start()
+    {
+        game_state = state.GetGameState();
     }
     private void Update()
     {

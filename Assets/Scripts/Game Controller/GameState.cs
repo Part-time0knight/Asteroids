@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject[] life;
+    [SerializeField] GameObject pause_text;
     private int score = 0;
     private int life_ind;
     private bool play = false;
@@ -18,15 +20,17 @@ public class GameState : MonoBehaviour
     }
     private void Update()
     {
-        if (play && Input.GetButtonDown("Pause"))
+        if (pause_text && play && Input.GetButtonDown("Pause"))
         {
             Pause(true);
+            pause_text.SetActive(true);
             press_pause = true;
         }
-        else if (press_pause && !play && Input.GetButtonDown("Pause"))
+        else if (pause_text && press_pause && !play && Input.GetButtonDown("Pause"))
         {
             Pause(false);
             press_pause = false;
+            pause_text.SetActive(false);
         }
     }
     public void SetScore( int new_score )
@@ -55,7 +59,7 @@ public class GameState : MonoBehaviour
         if (life_ind >= 0)
             Invoke("PlayerSpawn", 1f);
         else
-            EndGame();
+            Invoke("EndGame", 1f);
     }
     public void Pause(bool active, float time = 0f)
     {
@@ -84,9 +88,13 @@ public class GameState : MonoBehaviour
     {
         return !play;
     }
-    private void EndGame()
+    public void EndGame()
     {
-
+        SceneManager.LoadScene("EndGame");
+    }
+    public void InMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
     private void OnDestroy()
     {

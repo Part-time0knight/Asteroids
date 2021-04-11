@@ -25,8 +25,8 @@ public class CommonEnemyState : MonoBehaviour
     {
         shoota = ScriptableObject.CreateInstance<Factory>();
         state = GetComponent<ObjState>();
-        state.InitObj(hp, damage, score);
-        game_state = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
+        state.InitObj(hp, damage, score, null);
+        game_state = state.GetGameState();
         enemy_anim = GetComponent<Animator>();
         anim_spd = enemy_anim.speed;
     }

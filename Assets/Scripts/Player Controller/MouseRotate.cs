@@ -5,10 +5,15 @@ using UnityEngine;
 public class MouseRotate : MonoBehaviour
 {
     [SerializeField] float angl_fix = 90f;
+    private ObjState state;
     private GameState game_state;
     private void Awake()
     {
-        game_state = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
+        state = GetComponent<ObjState>();
+    }
+    private void Start()
+    {
+        game_state = state.GetGameState();
     }
     void Update()
     {

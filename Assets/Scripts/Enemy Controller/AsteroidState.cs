@@ -26,7 +26,7 @@ public class AsteroidState : MonoBehaviour
     private void Awake()
     {
         state = GetComponent<ObjState>();
-        state.InitObj(hp, damage, score);
+        state.InitObj(hp, damage, score, PreDestroy);
         spr = GetComponentInChildren<SpriteRenderer>();
         c_collider = GetComponent<CircleCollider2D>();
         creator = ScriptableObject.CreateInstance<Factory>();
@@ -57,7 +57,7 @@ public class AsteroidState : MonoBehaviour
         else
             Debug.LogError("Астероида такого размера не существует!");
     }
-    public void OnDestroy()
+    private void PreDestroy()
     {
         if (size > 0)
         {
