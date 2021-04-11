@@ -8,15 +8,25 @@ public class GameState : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject[] life;
     [SerializeField] GameObject pause_text;
+    private string nickname = "";
     private int score = 0;
     private int life_ind;
     private bool play = false;
     private bool press_pause = false;
+    private int rating_pos = 0;
     private void Awake()
     {
         PlayerSpawn();
-        Invoke("TikScore", 1);
         life_ind = life.Length - 1;
+        if (!PlayerPrefs.HasKey("index") || PlayerPrefs.GetInt("index") == 9)
+            PlayerPrefs.SetInt("index", rating_pos);
+        else
+            rating_pos = PlayerPrefs.GetInt("index");
+        Debug.Log(PlayerPrefs.HasKey("index"));
+        if(SceneManager.GetActiveScene().name == "EndGame")
+            score = PlayerPrefs.GetInt("temp");
+        else
+            Invoke("TikScore", 1);
     }
     private void Update()
     {
@@ -32,6 +42,18 @@ public class GameState : MonoBehaviour
             press_pause = false;
             pause_text.SetActive(false);
         }
+    }
+    public void SetNickname(string new_nickname)
+    {
+        nickname = new_nickname;
+    }
+    public void SaveScore()
+    {
+        string ind = rating_pos.ToString();
+        Debug.Log(score);
+        PlayerPrefs.SetString(ind + "s", nickname);
+        PlayerPrefs.SetInt(ind + "i", score);
+        PlayerPrefs.SetInt("index", rating_pos + 1);
     }
     public void SetScore( int new_score )
     {
@@ -91,10 +113,15 @@ public class GameState : MonoBehaviour
     public void EndGame()
     {
         SceneManager.LoadScene("EndGame");
+        PlayerPrefs.SetInt("temp", score);
     }
     public void InMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+    public void InGame()
+    {
+        SceneManager.LoadScene("Game");
     }
     private void OnDestroy()
     {

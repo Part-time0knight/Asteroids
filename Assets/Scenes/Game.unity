@@ -1454,7 +1454,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Pause
 
-    Press ''p'' or ''esc'' to continue'
+    Press ''p'' or Escape key to continue'
 --- !u!222 &1835219218
 CanvasRenderer:
   m_ObjectHideFlags: 0

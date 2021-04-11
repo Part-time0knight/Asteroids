@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
 {
     
     [SerializeField] GameObject asteroid;
-    [SerializeField] float asteroid_delay = 1f;
+    [SerializeField] float asteroid_delay = 2f;
     [SerializeField] float asteroid_spd_max = 3f;
     [SerializeField] float asteroid_spd_min = 1f;
     [SerializeField] GameObject common_enemy;
@@ -19,8 +19,12 @@ public class Spawner : MonoBehaviour
     private float ce_time;
     private int camera_h;
     private int camera_w;
+    private float score;
     private Factory creator;
     private GameState game_state;
+    private float max_asteroid_delay;
+    private float max_Common_enemy_delay;
+
     void Awake()
     {
         a_time = asteroid_delay - 0.5f;
@@ -29,6 +33,8 @@ public class Spawner : MonoBehaviour
         camera_w = Camera.main.pixelWidth;
         creator = ScriptableObject.CreateInstance<Factory>();
         game_state = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
+        max_Common_enemy_delay = common_enemy_delay;
+        max_asteroid_delay = asteroid_delay;
     }
 
     void Update()
@@ -36,6 +42,9 @@ public class Spawner : MonoBehaviour
         if (!game_state.GetPause())
         {
             TimeUpdate();
+            score = 1f + game_state.GetScore() / 1000f;
+            asteroid_delay = max_asteroid_delay / 2 + asteroid_delay / (2 * score);
+            common_enemy_delay = max_Common_enemy_delay / 2 + common_enemy_delay / (2 * score);
             if (a_time == 0f)
             {
                 SpawnEnemy(Random.Range(0, 4), asteroid);//спавн астероида
