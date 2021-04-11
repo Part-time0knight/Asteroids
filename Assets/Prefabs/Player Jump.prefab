@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 878434866856849108}
   m_Layer: 0
   m_Name: Player Jump
-  m_TagString: Untagged
+  m_TagString: Shiny
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

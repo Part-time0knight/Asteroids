@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3632279285565723789}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Bullet Spawn
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 8741019370912547530}
   - component: {fileID: 8741019370912547531}
   - component: {fileID: 8741019370912547532}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -115,9 +115,9 @@ GameObject:
   - component: {fileID: 3424796284076402377}
   - component: {fileID: 8495549283304671788}
   - component: {fileID: 1200420678385778695}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Player Phys
-  m_TagString: Object
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,7 +276,7 @@ MonoBehaviour:
   bullet: {fileID: 7863657303474707421, guid: ad9140487604ffc4c857345babdabd42, type: 3}
   bullet_start: {fileID: 6459316959358661423}
   jump_effect: {fileID: 3108404402325329352, guid: cee1c00f428944646b87636eaf760210, type: 3}
-  fire_spd: 0.5
+  fire_spd: 0.25
   bullet_spd: 10
   bullet_life: 4
   ship_radius: 0.4

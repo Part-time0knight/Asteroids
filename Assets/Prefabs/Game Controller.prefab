@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4646838173817070508}
   m_Layer: 0
   m_Name: Game Controller
-  m_TagString: Game Controller
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,3 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8741019370912547533, guid: 9478347b56718c747a56100e05bd4d55, type: 3}
+  life: []
+  object_tags:
+  - Player
+  - Player Bullet
+  - Spawner
+  - Bullet
+  - Enemy
+  - Shiny

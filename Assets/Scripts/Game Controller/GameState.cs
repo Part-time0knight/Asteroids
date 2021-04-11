@@ -9,11 +9,25 @@ public class GameState : MonoBehaviour
     private int score = 0;
     private int life_ind;
     private bool play = false;
+    private bool press_pause = false;
     private void Awake()
     {
         PlayerSpawn();
         Invoke("TikScore", 1);
         life_ind = life.Length - 1;
+    }
+    private void Update()
+    {
+        if (play && Input.GetButtonDown("Pause"))
+        {
+            Pause(true);
+            press_pause = true;
+        }
+        if (press_pause && !play && Input.GetButtonDown("Pause"))
+        {
+            Pause(false);
+            press_pause = false;
+        }
     }
     public void SetScore( int new_score )
     {
@@ -66,8 +80,16 @@ public class GameState : MonoBehaviour
     {
         play = true;
     }
+    public bool GetPause()
+    {
+        return !play;
+    }
     private void EndGame()
     {
 
+    }
+    private void OnDestroy()
+    {
+        CancelInvoke();
     }
 }

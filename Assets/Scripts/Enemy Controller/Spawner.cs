@@ -6,7 +6,6 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     
-    //[SerializeField] int border = 10; //% от края сторон
     [SerializeField] GameObject asteroid;
     [SerializeField] float asteroid_delay = 1f;
     [SerializeField] float asteroid_spd_max = 3f;
@@ -21,6 +20,7 @@ public class Spawner : MonoBehaviour
     private int camera_h;
     private int camera_w;
     private Factory creator;
+    private GameState game_state;
     void Awake()
     {
         a_time = asteroid_delay - 0.5f;
@@ -28,18 +28,22 @@ public class Spawner : MonoBehaviour
         camera_h = Camera.main.pixelHeight;
         camera_w = Camera.main.pixelWidth;
         creator = ScriptableObject.CreateInstance<Factory>();
+        game_state = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
     }
 
     void Update()
     {
-        TimeUpdate();
-        if (a_time == 0f)
+        if (!game_state.GetPause())
         {
-            SpawnEnemy(Random.Range(0, 4), asteroid);//спавн астероида
-        }
-        if (ce_time == 0f)
-        {
-            SpawnEnemy(Random.Range(0, 4), common_enemy);//спавн обычного противника
+            TimeUpdate();
+            if (a_time == 0f)
+            {
+                SpawnEnemy(Random.Range(0, 4), asteroid);//спавн астероида
+            }
+            if (ce_time == 0f)
+            {
+                SpawnEnemy(Random.Range(0, 4), common_enemy);//спавн обычного противника
+            }
         }
     }
     private GameObject SpawnEnemy(int side, GameObject type)
@@ -50,7 +54,8 @@ public class Spawner : MonoBehaviour
         float spd_min = 0f;
         float spd_max = 0f;
         float out_camera = 40f;
-        float life_time = Camera.main.ScreenToWorldPoint(new Vector3(camera_w, 0, 0)).x / spd * 3.5f;
+        float hypotenuse = Mathf.Sqrt(camera_w * camera_w + camera_h * camera_h);
+        float life_time = 1f;
         Vector3 start = new Vector3(0, 0, 0);
 
         if (type == asteroid) //определение объекта и его скорость
@@ -69,7 +74,7 @@ public class Spawner : MonoBehaviour
         {
             Debug.LogError("Врага с таким индексом не существует: " + type);
         }
-
+        life_time = Camera.main.ScreenToWorldPoint(new Vector3(hypotenuse, 0, 0)).x / spd * 2f;
         if (side == 0) // нижняя грань экрана
         {
             int place = Random.Range(0, camera_w);

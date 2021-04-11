@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5224804976699492632}
   m_Layer: 0
   m_Name: Explosion Player Bullet
-  m_TagString: Untagged
+  m_TagString: Shiny
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

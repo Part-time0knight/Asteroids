@@ -8,7 +8,7 @@ public class Score : MonoBehaviour
     private Text score;
     private void Awake()
     {
-        state = GameObject.FindGameObjectsWithTag("Game Controller")[0].GetComponent<GameState>();
+        state = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
         score = GetComponent<Text>();
     }
     void Update()

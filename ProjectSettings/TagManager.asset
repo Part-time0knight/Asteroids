@@ -4,10 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Object
   - Wall
   - Player Bullet
-  - Game Controller
+  - Shiny
+  - Spawner
+  - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX

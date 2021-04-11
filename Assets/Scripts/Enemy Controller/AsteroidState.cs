@@ -6,8 +6,10 @@ public class AsteroidState : MonoBehaviour
 {
     [SerializeField] private int damage = 1;
     [SerializeField] private int hp = 1;
+    [SerializeField] private Sprite[] huge_spr;
+    [SerializeField] private float huge_coll_radius = 1.2f;
     [SerializeField] private Sprite[] big_spr;
-    [SerializeField] private float big_coll_radius = 1f;
+    [SerializeField] private float big_coll_radius = 0.8f;
     [SerializeField] private Sprite[] medium_spr;
     [SerializeField] private float medium_coll_radius = 0.65f;
     [SerializeField] private Sprite[] small_spr;
@@ -32,7 +34,12 @@ public class AsteroidState : MonoBehaviour
     public void AsteroidSize(int new_size)
     {
         size = new_size;
-        if (size == 2)
+        if (size == 3)
+        {
+            spr.sprite = huge_spr[Random.Range(0, huge_spr.Length)];
+            c_collider.radius = huge_coll_radius;
+        }
+        else if (size == 2)
         {
             spr.sprite = big_spr[Random.Range(0, big_spr.Length)];
             c_collider.radius = big_coll_radius;

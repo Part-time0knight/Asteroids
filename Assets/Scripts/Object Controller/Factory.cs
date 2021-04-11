@@ -16,7 +16,7 @@ public class Factory : ScriptableObject
         if (state1)
         {
             if (asteroid_size == -1)
-                asteroid_size = Random.Range(0, 3);
+                asteroid_size = Random.Range(0, 4);
             state1.GetComponent<AsteroidState>().AsteroidSize(asteroid_size);
         }
         return create_item;

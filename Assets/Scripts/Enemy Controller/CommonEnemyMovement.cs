@@ -8,9 +8,34 @@ public class CommonEnemyMovement : MonoBehaviour
     [SerializeField] private float change_time = 2f;
     [SerializeField] private float angle = 30f;
     private ObjState state;
+    private float delta_time1 = 0f;
+    private float delta_time2 = 0f;
+    private GameState game_state;
     private void Awake()
     {
-        Invoke("Change—ourse", activate_time);
+        game_state = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
+    }
+    private void Update()
+    {
+        if (!game_state.GetPause())
+        {
+            if (delta_time1 < activate_time && delta_time1 >= 0f)
+                delta_time1 += Time.deltaTime;
+            else if (delta_time2 < activate_time && delta_time2 >= 0f)
+                delta_time2 += Time.deltaTime;
+
+            if (delta_time1 >= activate_time)
+            {
+                Change—ourse();
+                delta_time1 = -1f;
+            }
+
+            if (delta_time2 >= change_time)
+            {
+                Line—ourse();
+                delta_time2 = -1f;
+            }
+        }
     }
     private void Change—ourse()
     {
@@ -20,7 +45,6 @@ public class CommonEnemyMovement : MonoBehaviour
             transform.eulerAngles = new Vector3(0f, 0f, ((180f - angle) * side_x));
         else
             transform.eulerAngles = new Vector3(0f, 0f, (angle * side_x));
-        Invoke("Line—ourse", change_time);
     }
     private void Line—ourse()
     {

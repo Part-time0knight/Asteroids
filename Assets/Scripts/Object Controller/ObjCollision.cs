@@ -30,7 +30,7 @@ public class ObjCollision : MonoBehaviour
             Instantiate(explode_obj, transform.position, Quaternion.identity);
         if (damag_maker.tag == "Player Bullet")
         {
-            GameState game_controller = GameObject.FindGameObjectsWithTag("Game Controller")[0].GetComponent<GameState>();
+            GameState game_controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
             game_controller.SetScore(game_controller.GetScore() + state.GetScore());
         }
     }

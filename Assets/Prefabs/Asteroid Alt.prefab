@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1099141965315119485}
   m_Layer: 0
   m_Name: Asteroid Alt
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1582492288587056513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
   - {fileID: 2553970096406780906}
   m_Father: {fileID: 0}
@@ -51,11 +51,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   hp: 1
-  big_spr:
+  huge_spr:
   - {fileID: 21300000, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
   - {fileID: 21300002, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
   - {fileID: 21300004, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
-  big_coll_radius: 1
+  huge_coll_radius: 1.2
+  big_spr:
+  - {fileID: 21300006, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300008, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300010, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  - {fileID: 21300012, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
+  big_coll_radius: 0.8
   medium_spr:
   - {fileID: 21300014, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
   - {fileID: 21300016, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
@@ -72,6 +78,7 @@ MonoBehaviour:
   - {fileID: 21300034, guid: 1bd6c74c058d5f143a391104c445e845, type: 3}
   small_coll_radius: 0.18
   aster_pref: {fileID: 346448836300850005, guid: b5b491304a64f39478e9ff1fbeba0524, type: 3}
+  score: 10
 --- !u!114 &2426024322279415505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +152,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.2
 --- !u!1 &9003747756857780266
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +166,7 @@ GameObject:
   - component: {fileID: 8105444254058107892}
   m_Layer: 0
   m_Name: Asteroid Alt Sprite
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

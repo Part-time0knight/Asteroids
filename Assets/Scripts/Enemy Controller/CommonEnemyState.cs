@@ -16,21 +16,40 @@ public class CommonEnemyState : MonoBehaviour
 
     private ObjState state;
     private float reload = 0f;
+    private float anim_spd;
     private Factory shoota;
+    private GameState game_state;
+    private Animator enemy_anim;
+
     private void Awake()
     {
         shoota = ScriptableObject.CreateInstance<Factory>();
         state = GetComponent<ObjState>();
         state.InitObj(hp, damage, score);
+        game_state = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>();
+        enemy_anim = GetComponent<Animator>();
+        anim_spd = enemy_anim.speed;
     }
     private void Update()
     {
-        if (fire_spd < reload) reload = 0f;//сброс перезарядки
-        if (reload == 0f)
+        if (!game_state.GetPause())
         {
-            bullet_ang.transform.eulerAngles = new Vector3(0, 0, Random.Range(-180f, 180f));
-            shoota.CreateObject(bullet, bullet_start.transform.position, bullet_life, bullet_spd, bullet_ang.transform.eulerAngles.z);//выстрел
+            if (fire_spd < reload) reload = 0f;//сброс перезарядки
+            if (reload == 0f)
+            {
+                bullet_ang.transform.eulerAngles = new Vector3(0, 0, Random.Range(-180f, 180f));
+                shoota.CreateObject(bullet, bullet_start.transform.position, bullet_life, bullet_spd, bullet_ang.transform.eulerAngles.z);//выстрел
+            }
+            reload += Time.deltaTime;//процесс перезарядки
+            if (enemy_anim.speed == 0f)
+            {
+                enemy_anim.speed = anim_spd;
+            }
         }
-        reload += Time.deltaTime;//процесс перезарядки
+        else if (enemy_anim.speed != 0f)
+        {
+            enemy_anim.speed = 0f;
+        }
+        
     }
 }
