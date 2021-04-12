@@ -8,6 +8,7 @@ public class GameState : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject[] life;
     [SerializeField] GameObject pause_text;
+    private AudioSource bg_music;
     private string nickname = "";
     private int score = 0;
     private int life_ind;
@@ -22,11 +23,13 @@ public class GameState : MonoBehaviour
             PlayerPrefs.SetInt("index", rating_pos);
         else
             rating_pos = PlayerPrefs.GetInt("index");
-        Debug.Log(PlayerPrefs.HasKey("index"));
         if(SceneManager.GetActiveScene().name == "EndGame")
             score = PlayerPrefs.GetInt("temp");
         else
             Invoke("TikScore", 1);
+        bg_music = GetComponent<AudioSource>();
+        if (bg_music)
+            SoundPlay();
     }
     private void Update()
     {
@@ -42,6 +45,12 @@ public class GameState : MonoBehaviour
             press_pause = false;
             pause_text.SetActive(false);
         }
+    }
+    public void SoundPlay()
+    {
+        if (SceneManager.GetActiveScene().buildIndex > 0)
+            bg_music.time = PlayerPrefs.GetFloat("music");
+        bg_music.Play();
     }
     public void SetNickname(string new_nickname)
     {
@@ -114,6 +123,7 @@ public class GameState : MonoBehaviour
     {
         SceneManager.LoadScene("EndGame");
         PlayerPrefs.SetInt("temp", score);
+        PlayerPrefs.SetFloat("music", bg_music.time);
     }
     public void InMenu()
     {
@@ -122,6 +132,7 @@ public class GameState : MonoBehaviour
     public void InGame()
     {
         SceneManager.LoadScene("Game");
+        PlayerPrefs.SetFloat("music", bg_music.time);
     }
     private void OnDestroy()
     {
