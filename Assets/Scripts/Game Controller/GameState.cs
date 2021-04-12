@@ -74,7 +74,6 @@ public class GameState : MonoBehaviour
     public void SaveScore()
     {
         string ind = rating_pos.ToString();
-        Debug.Log(score);
         PlayerPrefs.SetString(ind + "s", nickname);
         PlayerPrefs.SetInt(ind + "i", score);
         PlayerPrefs.SetInt("index", rating_pos + 1);

@@ -66,6 +66,7 @@ public class AsteroidState : MonoBehaviour
     //---порождение астероидов поменьше перед смертью---
     private void PreDestroy()
     {
+        Destroy(transform.GetChild(0).gameObject);
         if (size > 0)
         {
             NewAsteroid(size - 1, 1);
