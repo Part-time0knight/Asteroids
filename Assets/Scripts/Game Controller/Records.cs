@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+[RequireComponent(typeof(Text))]
+/*
+ * Скрипт вывода последних 10ти сохраненных рекордов в текстовый объект
+ * 
+ */
 public class Records : MonoBehaviour
 {
     private string[] records_arr;

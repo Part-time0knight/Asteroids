@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(ObjState))]
 [RequireComponent(typeof(Rigidbody2D))]
+/*
+ * Скрипт полета объекта. При активации, 
+ * rigidbody движется по оси Y со скоростью spd
+ * 
+ */
+
 public class ObjFly : MonoBehaviour
 {
     private Rigidbody2D body;
@@ -23,8 +29,10 @@ public class ObjFly : MonoBehaviour
 
     void FixedUpdate()
     {
+        //------процесс движения------
         if (active && !game_state.GetPause()) body.transform.Translate(0, obj_spd * Time.deltaTime, 0);
     }
+    //----метод активации движения----
     public void ActivateObj(float spd, float angl, float time)
     {
         transform.eulerAngles = new Vector3(0, 0, angl);

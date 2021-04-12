@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Скрипт, уничтожающий объект 
+ * при окончании проигрывания звука
+ * 
+ */
 public class SoundEffect : MonoBehaviour
 {
     private AudioSource audio_source;

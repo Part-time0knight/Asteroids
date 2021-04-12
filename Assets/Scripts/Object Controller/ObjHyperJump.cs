@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * —крипт вычесл€ющий точку дл€ телепортации
+ * 
+ */
 public class ObjHyperJump : MonoBehaviour
 {
     private float cam_h;
     private float cam_w;
     private void Awake()
     {
+        //--------ќпределение параметров камеры---------
         Vector3 cam = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, Camera.main.nearClipPlane));
         cam_w = cam.x;
         cam_h = cam.y;

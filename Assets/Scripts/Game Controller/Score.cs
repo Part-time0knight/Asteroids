@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+[RequireComponent(typeof(Text))]
+/*
+ * Скрипт вывода игровых очков
+ * 
+ */
+
 public class Score : MonoBehaviour
 {
     private GameState state;

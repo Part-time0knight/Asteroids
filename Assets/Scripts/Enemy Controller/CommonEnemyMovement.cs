@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(ObjState))]
+/*
+ * Скрипт улучшения движения для обычного врага.
+ * Изменяет угол объекта.
+ * Теперь враг движется зигзагом
+ */
 public class CommonEnemyMovement : MonoBehaviour
 {
     [SerializeField] private float activate_time = 2f;
@@ -21,6 +26,7 @@ public class CommonEnemyMovement : MonoBehaviour
     }
     private void Update()
     {
+        //---Таймеры, таймеры, таймеры---
         if (!game_state.GetPause())
         {
             if (delta_time1 < activate_time && delta_time1 >= 0f)
@@ -30,17 +36,18 @@ public class CommonEnemyMovement : MonoBehaviour
 
             if (delta_time1 >= activate_time)
             {
-                ChangeСourse();
+                ChangeСourse();//изменение движения по диагонали
                 delta_time1 = -1f;
             }
 
             if (delta_time2 >= change_time)
             {
-                LineСourse();
+                LineСourse();//изменения движения на курс по горизонтали
                 delta_time2 = -1f;
             }
         }
     }
+    //-----Изменение угла объекта, для движения по диагонали------
     private void ChangeСourse()
     {
         float side_y = Mathf.Sign(transform.position.y) * -1f;
@@ -50,6 +57,7 @@ public class CommonEnemyMovement : MonoBehaviour
         else
             transform.eulerAngles = new Vector3(0f, 0f, (angle * side_x));
     }
+    //-----Изменение угла объекта, для движения по горизонтали------
     private void LineСourse()
     {
         float side_x = Mathf.Sign(180f - transform.eulerAngles.z);

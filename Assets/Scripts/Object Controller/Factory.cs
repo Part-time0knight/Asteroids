@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * Класс, помогающий создавать новые игровые объекты
+ * Используется для создания пуль и противников
+ */
 public class Factory : ScriptableObject
 {
-    public void CreatePlayer()
-    {
-
-    }
     public GameObject CreateObject(GameObject item, Vector3 position, float life_time = 0f, float spd = 0f, float angle = 0f, int asteroid_size = -1)
     {
         GameObject create_item = Instantiate(item, position, Quaternion.identity);

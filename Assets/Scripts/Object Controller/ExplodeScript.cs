@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * скрипт, уничтожающий объект по окончании анимации
+ * и вызывающий звуковой эффект, при наличии
+ */
 public class ExplodeScript : MonoBehaviour
 {
     [SerializeField] GameObject sound_effect = null;

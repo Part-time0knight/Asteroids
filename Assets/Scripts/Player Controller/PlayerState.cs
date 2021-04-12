@@ -7,19 +7,24 @@ using UnityEngine;
 [RequireComponent(typeof(ObjHyperJump))]
 [RequireComponent(typeof(Animator))]
 
+/*----------------------------------------------
+ *Этот скрипт содержит характеристики объекта игрока и его уникальные свойства
+ *
+ ----------------------------------------------*/
+
 public class PlayerState : MonoBehaviour
 {
-    [SerializeField] GameObject bullet;
-    [SerializeField] GameObject bullet_start;
-    [SerializeField] GameObject jump_effect;
-    [SerializeField] int hp = 1;
-    [SerializeField] int dmg = 1;
-    [SerializeField] float fire_spd = 1f;
-    [SerializeField] float bullet_spd = 10f;
-    [SerializeField] float bullet_life = 4f;
-    [SerializeField] float ship_radius = 0.4f;
+    [SerializeField] private GameObject bullet;//префаб пули
+    [SerializeField] private GameObject bullet_start;//объект места спавна пули
+    [SerializeField] private GameObject jump_effect;//префаб эффекта телепортации
+    [SerializeField] private int hp = 1;
+    [SerializeField] private int dmg = 1;
+    [SerializeField] private float fire_spd = 1f;
+    [SerializeField] private float bullet_spd = 10f;
+    [SerializeField] private float bullet_life = 4f;
+    [SerializeField] private float ship_radius = 0.4f;
 
-    private Factory shoota;
+    private Factory shoota;//фабрика пуль
     private ObjState state;
     private ObjHyperJump jump;
     private Animator anim;
@@ -29,33 +34,38 @@ public class PlayerState : MonoBehaviour
     private float anm_spd;
     private void Awake()
     {
+        //------определение переменных------
         shoota = ScriptableObject.CreateInstance<Factory>();
         state = GetComponent<ObjState>();
         state.InitObj(hp, dmg, 0, PreDestroy);
         anim = GetComponent<Animator>();
         jump = GetComponent<ObjHyperJump>();
-        game_state = state.GetGameState();
         anm_spd = anim.speed;
+    }
+    private void Start()
+    {
+        //------определение переменных2------
+        game_state = state.GetGameState();
     }
     private void Update()
     {
-        //------------Shooting------------
+        
         if (!game_state.GetPause())
         {
-            if (reload != 0f) reload += Time.deltaTime;//процесс перезарядки
-            if (fire_spd < reload) reload = 0f;//сброс перезарядки
+            //------------стрельба------------
+            if (reload != 0f) reload += Time.deltaTime;
+            if (fire_spd < reload) reload = 0f;
             if (Input.GetMouseButton(0) && reload == 0f)
             {
                 shoota.CreateObject(bullet, bullet_start.transform.position, bullet_life, bullet_spd, transform.eulerAngles.z - 180);//выстрел
                 reload += Time.deltaTime;
             }
-
-            //------------animation-----------
+            //------------контроль анимации-----------
             fly = state.GetFly();
             anim.SetBool("Fly", fly);
             if (anim.speed == 0f)
                 anim.speed = anm_spd;
-            //------------Gyper Jump----------
+            //--------------гипер прыжок--------------
             if (Input.GetButtonDown("Jump"))
             {
                 Vector2 new_coord = jump.GetPoint(ship_radius);
@@ -66,6 +76,7 @@ public class PlayerState : MonoBehaviour
         }
         else
         {
+            //---Остановка анимации в режиме паузе---
             if (anim.GetBool("Fly"))
             {
                 anim.speed = 0f;
@@ -73,6 +84,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+    //---функция вызываемая перед уничтожением объекта---
     private void PreDestroy()
     {
         if (game_state)
