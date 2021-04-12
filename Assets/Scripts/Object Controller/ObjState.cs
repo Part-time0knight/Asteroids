@@ -11,6 +11,7 @@ public class ObjState : MonoBehaviour
     private bool in_fly = false; //для контроля анимации
     private int score = 0; //
     private float delta_time = -1f;
+    private float destroy_time = 0f;
     StateDestroy SpecialDestroy = null;
     GameState game_state;
     private void Awake()
@@ -28,6 +29,9 @@ public class ObjState : MonoBehaviour
     {
         if (!game_state.GetPause() && delta_time >= 0f)
             delta_time += Time.deltaTime;
+        if (destroy_time <= delta_time)
+            DestroyObj(0);
+
     }
     public GameState GetGameState()
     {
@@ -76,9 +80,9 @@ public class ObjState : MonoBehaviour
     }
     public void DestroyObj(float time)
     {
-        if (delta_time < 0f)
-            delta_time = 0f;
-        if (delta_time >= time)
+        destroy_time = time;
+        delta_time = 0f;
+        if (time == 0)
         {
             if (SpecialDestroy != null)
             {

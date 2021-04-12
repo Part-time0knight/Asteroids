@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\Enemy Controller\Spawner.cs" />
     <Compile Include="Assets\Scripts\Object Controller\ObjHyperJump.cs" />
     <Compile Include="Assets\Scripts\Game Controller\GameState.cs" />
+    <Compile Include="Assets\Scripts\Game Controller\Records.cs" />
     <Compile Include="Assets\Scripts\Object Controller\ExplodeScript.cs" />
     <Compile Include="Assets\Scripts\Object Controller\ObjCollision.cs" />
     <Compile Include="Assets\Scripts\Game Controller\Score.cs" />
@@ -69,15 +70,16 @@
     <Compile Include="Assets\Scripts\Object Controller\ObjFly.cs" />
     <Compile Include="Assets\Scripts\Player Controller\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player Controller\MouseRotate.cs" />
+    <Compile Include="Assets\Scripts\Game Controller\SaveName.cs" />
     <Compile Include="Assets\Scripts\Enemy Controller\CommonEnemyState.cs" />
+    <Compile Include="Assets\Scripts\Game Controller\CatAnim.cs" />
     <Compile Include="Assets\Scripts\Game Controller\ToMenuButton.cs" />
+    <Compile Include="Assets\Scripts\Game Controller\CatText.cs" />
     <Compile Include="Assets\Scripts\Object Controller\ObjRotation.cs" />
     <Compile Include="Assets\Scripts\Bullet Controller\BulletState.cs" />
     <Compile Include="Assets\Scripts\Enemy Controller\AsteroidState.cs" />
-    <Compile Include="Assets\Scripts\Game Controller\CatText.cs" />
-    <Compile Include="Assets\Scripts\Game Controller\CatAnim.cs" />
-    <Compile Include="Assets\Scripts\Game Controller\SaveName.cs" />
-    <Compile Include="Assets\Scripts\Game Controller\Records.cs" />
+    <Compile Include="Assets\Scripts\Game Controller\ButtonSounds.cs" />
+    <Compile Include="Assets\Scripts\Game Controller\SoundEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

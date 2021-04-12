@@ -17,9 +17,9 @@ public class Records : MonoBehaviour
         for (int i = 0; i < 9; i++)
         {
             if (i < length)
-                records_arr[i] = i + ".Score:" + PlayerPrefs.GetInt(i.ToString() + "i") + "...." + PlayerPrefs.GetString(i.ToString() + "s") + "\n";
+                records_arr[i] = (i + 1) + ".Score:" + PlayerPrefs.GetInt(i.ToString() + "i") + "...." + PlayerPrefs.GetString(i.ToString() + "s") + "\n";
             else
-                records_arr[i] = i + free_string;
+                records_arr[i] = (i + 1) + free_string;
             record_text.text += records_arr[i];
         }
     }

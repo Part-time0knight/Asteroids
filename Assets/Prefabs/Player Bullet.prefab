@@ -175,3 +175,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.1
+  sound_effect: {fileID: 2311430888215908091, guid: 29892dc1a300e1c459d9dde127584432, type: 3}
